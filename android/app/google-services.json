@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "348832578204",
+    "project_id": "mivecindad-445dc",
+    "storage_bucket": "mivecindad-445dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348832578204:android:d5c1b955e02ec79190cb59",
+        "android_client_info": {
+          "package_name": "jhondeveloper7.com.mivecindad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "348832578204-51aao84hpmh82nphe48dbv6dujbfa66p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZHGS0ssAEBJ5ua-OdA1gUpanRyGeSTt0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348832578204-51aao84hpmh82nphe48dbv6dujbfa66p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
