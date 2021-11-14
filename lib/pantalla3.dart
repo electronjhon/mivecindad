@@ -1,54 +1,102 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mivecindad/main.dart';
+import 'package:mivecindad/pantalla2.dart';
+import 'package:mivecindad/pantalla3.dart';
+import 'package:mivecindad/pantalla4.dart';
 
-class pantalla3 extends StatefulWidget {
-  final String criterio;
-  const pantalla3(this.criterio,{Key? key}) : super(key: key);
+class pantalla3 extends StatelessWidget {
+  //const pantalla3({Key? key}) : super(key: key);
 
-  @override
-  _pantalla3State createState() => _pantalla3State();
-}
+  TextEditingController dato = TextEditingController();
 
-class _pantalla3State extends State<pantalla3> {
-
-  List negs=[];
-
-  void initState(){
-    super.initState();
-    getCriterio();
-  }
-
-  void getCriterio() async{
-    CollectionReference datos = FirebaseFirestore.instance.collection('Negocios');
-    QuerySnapshot negocios2 = await datos.where('Categoria', isEqualTo: widget.criterio).get();
-    if(negocios2.docs.length!=0){ //trae datos
-      for(var neg in negocios2.docs){
-        print(neg.data());
-        setState(() {
-          negs.add(neg);
-        });
-      }
-    }else{
-      print("Ha fallado...");
-    }
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pantalla3'),
+        title: Text('Consulta por Categoria en Pantalla 3'),
       ),
-      body: Center(
-        child: ListView.builder(
-            itemCount: negs.length,
-            itemBuilder: (BuildContext context, i){
-              return Container(
-              child: Text(negs[i]['Nombre']+' : '), //+negs[i]['Productos']
-              );
-    },
+      body: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.all(33.0),
+
+            child:
+            TextField(controller: dato,style: TextStyle(fontSize: 27),
+              autofocus: false,
+              // autofocus: true,
+              keyboardType: TextInputType.name,
+              textInputAction: TextInputAction.send,
+              decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.search,color: Colors.black38,),
+                  hintText: "Busca Categoria en plural"
+              ),
+            ),
+
+          ),
+          Container(
+            child: ElevatedButton(
+              onPressed: (){
+                print(dato.text);
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla4(dato.text)));
+              },child: Text('Consultar por categoria'),
+
+            ),
+          ),
+
+        ],
+        /*floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> main()));
+          }, label: Text("Inicio"),
+          icon: Icon(Icons.arrow_left), */
         ),
-      ),
+      bottomNavigationBar: barrainferior(),
+
+    );
+
+  }
+}
+
+class barrainferior extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      backgroundColor: Colors.white38,
+      selectedItemColor: Colors.blue,
+      unselectedItemColor: Colors.blue,
+      onTap: (index){
+        if(index==0){
+          print('redirecciona a inicio'); //linea para regresar a inicio sin importar la ruta
+          Navigator.of(context).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+        }else {
+          //var t=DateTime.now();
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla2()));
+
+          //print(t);
+        }/*else{
+          print("va a consulta categoria");
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla3()));
+        } */
+
+      },
+      items: [
+
+        BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Inicio'
+        ),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.store),
+            label: 'Negocios'
+        ),/*
+        BottomNavigationBarItem(
+            icon: Icon(Icons.cases),
+            label: 'Categorias'
+        )*/
+      ],
     );
   }
 }

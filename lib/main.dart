@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mivecindad/pantalla1.dart';
 import 'package:mivecindad/pantalla2.dart';
 import 'package:mivecindad/pantalla3.dart';
+import 'package:mivecindad/pantalla4.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Mi vecindad',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -66,19 +68,19 @@ void getNegocios() async{
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text("Mi vecindad"),
+        title: Text("Mi Vecindad"),
       ),
-      body: Center(
+        body: Column(
+          children: [
+            Container(
+                margin: EdgeInsets.only(top:0.0),
+                //color: Colors.cyanAccent,
+                //padding: EdgeInsets.all(20.0),
+                child: Image.network("https://i.pinimg.com/550x/e4/e1/fb/e4e1fb324a6796b50c3c6cd800b937f2.jpg",height: 710,width: 710,)
+            ),
+          ],
 
-        child: ListView.builder(
-          itemCount: datos_negocios.length,
-          itemBuilder: (BuildContext context,i){
-            return ListTile(
-              title: Text("Negocio "+i.toString()+" - "+datos_negocios[i]['Nombre'].toString()),
-            );
-          },
         ),
-      ),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla2()));
@@ -90,6 +92,8 @@ void getNegocios() async{
     );
   }
 }
+
+// ***********  barra inferior  BottomNavigator ***********************
 class barrainferior extends StatelessWidget {
 
   @override
@@ -100,23 +104,24 @@ class barrainferior extends StatelessWidget {
       unselectedItemColor: Colors.blue,
       onTap: (index){
         if(index==0){
-         // print('hola');
-          // Navigator.pop(context);}else if(index==1){
+          print('redirecciona a productos pantalla 5');
+          // Navigator.pop(context);
+        }else if(index==1){
           //var t=DateTime.now();
           Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla2()));
 
           //print(t);
         }else{
           print("va a consulta categoria");
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla3()));
         }
 
       },
       items: [
-      /*  BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_back_outlined),
-            label: 'Atras'
-        ),*/
+        BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag),
+            label: 'Productos'
+        ),
         BottomNavigationBarItem(
             icon: Icon(Icons.store),
             label: 'Negocios'
