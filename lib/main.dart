@@ -63,7 +63,7 @@ void getNegocios() async{
 }
   @override
   Widget build(BuildContext context) {
-
+    String title="";
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -83,7 +83,7 @@ void getNegocios() async{
         ),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla2()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla1(title: title)));
           }, label: Text("Siguiente"),
         icon: Icon(Icons.arrow_forward),
       ),
@@ -95,7 +95,7 @@ void getNegocios() async{
 
 // ***********  barra inferior  BottomNavigator ***********************
 class barrainferior extends StatelessWidget {
-
+   String title=" ";
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -108,7 +108,7 @@ class barrainferior extends StatelessWidget {
           // Navigator.pop(context);
         }else if(index==1){
           //var t=DateTime.now();
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla2()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla1(title: title)));
 
           //print(t);
         }else{

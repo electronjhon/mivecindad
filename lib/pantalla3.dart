@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mivecindad/main.dart';
+import 'package:mivecindad/pantalla1.dart';
 import 'package:mivecindad/pantalla2.dart';
 import 'package:mivecindad/pantalla3.dart';
 import 'package:mivecindad/pantalla4.dart';
@@ -60,7 +61,7 @@ class pantalla3 extends StatelessWidget {
 }
 
 class barrainferior extends StatelessWidget {
-
+  String title=" ";
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -73,7 +74,7 @@ class barrainferior extends StatelessWidget {
           Navigator.of(context).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
         }else {
           //var t=DateTime.now();
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla2()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla1(title: title)));
 
           //print(t);
         }/*else{
