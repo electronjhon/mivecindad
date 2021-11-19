@@ -74,7 +74,7 @@ class barrainferior extends StatelessWidget {
           Navigator.of(context).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
         }else {
           //var t=DateTime.now();
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla1(title: title)));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla2(title: title)));
 
           //print(t);
         }/*else{

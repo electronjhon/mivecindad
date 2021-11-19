@@ -83,7 +83,7 @@ void getNegocios() async{
         ),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla1(title: title)));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla2(title: title)));
           }, label: Text("Siguiente"),
         icon: Icon(Icons.arrow_forward),
       ),
@@ -108,7 +108,7 @@ class barrainferior extends StatelessWidget {
           // Navigator.pop(context);
         }else if(index==1){
           //var t=DateTime.now();
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla1(title: title)));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla2(title: title)));
 
           //print(t);
         }else{

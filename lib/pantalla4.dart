@@ -38,33 +38,61 @@ class _pantalla4State extends State<pantalla4> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Listado por categorias Pantalla 4'),
+        title: Text('Consulta de '+ widget.criterio),
       ),
       body: Center(
         child: ListView.builder(
-          itemCount: negs.length,
-          itemBuilder: (BuildContext context, i){
-            return Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              margin: EdgeInsets.all(15),
+            itemCount: negs.length,
+            itemBuilder: (BuildContext context, j) {
+              return Container(
+                //padding: EdgeInsets.all(27),
 
-              elevation: 20,
-             // padding: EdgeInsets.all(33.0),
-              child: Text(negs[i]['Nombre']+' \nDirección :  '+ negs[i]['Direccion']+
-                  ' \nTel :  '+(negs[i]['Telefono'].toString()//+'\n '+ negs[i]['Logo']
-              )
-                  ,style: TextStyle(fontSize: 27,color: Colors.black87,
-                  backgroundColor: Colors.yellow),),
-              //Container:(Image.network(negs[i]['Logo']))
-            );
-          },
-        ),
+                  child: miCardImage(url: negs[j]['Logo'],
+                      texto: negs[j]['Nombre']
+                          + "\n ✆ :  " + negs[j]['Telefono'].toString()
+                          + '\n ➤ :  ' + negs[j]['Direccion'])
+
+
+              );
+            }),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla3()));
         }, label: Text("Atras"),
         icon: Icon(Icons.arrow_left),
+      ),
+    );
+  }
+}
+
+
+class miCardImage extends StatelessWidget {
+  final String url;
+  final String texto;
+
+  const miCardImage({required this.url, required this.texto});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
+      margin: EdgeInsets.all(20),
+      elevation: 10,
+      color: Colors.blueAccent,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(35),
+        child: Column(
+          children: [
+            Image.network(url),
+            Container(
+              padding: EdgeInsets.all(10),
+              color: Colors.blueAccent,
+              child: Text(texto,style: TextStyle(fontSize: 20, color: Colors.white),
+                textAlign: TextAlign.center,),
+            )
+          ],
+        ),
       ),
     );
   }
