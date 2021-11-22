@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mivecindad/pantalla3.dart';
+import 'package:mivecindad/pantalla5.dart';
+import 'package:flutter/widgets.dart';
+
+// ******    RESULTADO CONSULTA POR CATEGORIA ************
 
 class pantalla4 extends StatefulWidget {
   final String criterio;
@@ -31,41 +34,107 @@ class _pantalla4State extends State<pantalla4> {
         });
       }
     }else{
+
       print("Ha fallado...");
+
     }
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Listado por categorias Pantalla 4'),
+        title: Text('Pan4 Consulta de '+ widget.criterio),
       ),
-      body: Center(
-        child: ListView.builder(
-          itemCount: negs.length,
-          itemBuilder: (BuildContext context, i){
-            return Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              margin: EdgeInsets.all(15),
+      body:  ListView.builder(
+            itemCount: negs.length,
+            itemBuilder: (BuildContext context, j) {
+              return ListTile(
+                //padding: EdgeInsets.all(27),
+                onTap: (){
+                  print('dentro de onTap pantalla4');
+                  print(negs[j]); // Print datos card * en consola
+                  datosNegocio n =datosNegocio(negs[j]['Nombre'],
+                      negs[j]['Telefono'],
+                      negs[j]['Direccion'],
+                      negs[j]['Logo'],
+                      negs[j]['Web'],
+                      negs[j]['Imagen'],
+                      negs[j]['Imagen1']);
 
-              elevation: 20,
-             // padding: EdgeInsets.all(33.0),
-              child: Text(negs[i]['Nombre']+' \nDirección :  '+ negs[i]['Direccion']+
-                  ' \nTel :  '+(negs[i]['Telefono'].toString()//+'\n '+ negs[i]['Logo']
-              )
-                  ,style: TextStyle(fontSize: 27,color: Colors.black87,
-                  backgroundColor: Colors.yellow),),
-              //Container:(Image.network(negs[i]['Logo']))
-            );
-          },
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>pantalla5(negocio: n)));
+                },
+
+                  title: miCardImage(url: negs[j]['Logo'],
+                      texto: negs[j]['Nombre']
+                          + "\n ✆ :  " + negs[j]['Telefono'].toString()
+                          + '\n ➤ :  ' + negs[j]['Direccion']),
+              );
+            }),
+
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+             Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla3()));
+           }, label: Text("Atras"),
+            icon: Icon(Icons.arrow_left),
         ),
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla3()));
-        }, label: Text("Atras"),
-        icon: Icon(Icons.arrow_left),
+    );
+  }
+
+}
+
+
+class miCardImage extends StatelessWidget {
+  final String url;
+  final String texto;
+
+  const miCardImage({required this.url, required this.texto});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
+      margin: EdgeInsets.all(20),
+      elevation: 10,
+      color: Colors.blueAccent,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(35),
+        child: Column(
+          children: [
+            Image.network(url),
+            Container(
+              padding: EdgeInsets.all(10),
+              color: Colors.blueAccent,
+              child: Text(texto,style: TextStyle(fontSize: 20, color: Colors.white),
+                textAlign: TextAlign.center,),
+            )
+          ],
+        ),
       ),
     );
   }
+}
+
+
+class datosNegocio{
+
+  String Nombre="";
+  int Telefono=0;
+  String Direccion="";
+  String Logo="";
+  String Web="";
+  String Imagen="";
+  String Imagen1="";
+
+
+  datosNegocio(Nombre,Telefono,Direccion,Logo,Web,Imagen,Imagen1){
+    this.Nombre=Nombre;
+    this.Telefono=Telefono;
+    this.Direccion=Direccion;
+    this.Logo=Logo;
+    this.Web=Web;
+    this.Imagen=Imagen;
+    this.Imagen1=Imagen1;
+
+  }
+
 }
