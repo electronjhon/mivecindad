@@ -5,6 +5,8 @@ import 'package:mivecindad/pantalla1.dart';
 import 'package:mivecindad/pantalla2.dart';
 import 'package:mivecindad/pantalla3.dart';
 import 'package:mivecindad/pantalla4.dart';
+import 'package:mivecindad/consultaProducto.dart';
+import 'package:mivecindad/registroCliente.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -68,7 +70,8 @@ void getNegocios() async{
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text("Mi Vecindad"),
+        title:  Text(" Mi Vecindad ",
+          style: TextStyle(fontStyle:   FontStyle.italic,fontSize: 25),),
       ),
         body: Column(
           children: [
@@ -83,9 +86,9 @@ void getNegocios() async{
         ),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla2(title: title)));
-          }, label: Text("Siguiente"),
-        icon: Icon(Icons.arrow_forward),
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> registroClientes()));
+          }, label: Text("Registrarse"),
+        icon: Icon(Icons.add,size: 30,color: Colors.white,),
       ),
         bottomNavigationBar: barrainferior()
 
@@ -105,10 +108,11 @@ class barrainferior extends StatelessWidget {
       onTap: (index){
         if(index==0){
           print('redirecciona a productos pantalla 5');
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> consultaProducto()));
           // Navigator.pop(context);
         }else if(index==1){
           //var t=DateTime.now();
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla2(title: title)));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla1(title: title)));
 
           //print(t);
         }else{

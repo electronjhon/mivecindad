@@ -1,118 +1,97 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mivecindad/main.dart';
-import 'package:mivecindad/pantalla2.dart';
-import 'package:mivecindad/pantalla3.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:mivecindad/pantalla1.dart';
 
-class pantalla2 extends StatefulWidget {
-  const pantalla2({Key? key, required this.title}) : super(key: key);
+// *****  RESULTADO DATOS NEGOCIO SELECCIONADO EN EL LISTADO COMPLETO   ****
 
-  final String title;
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const pantalla2(title: 'Flutter Demo Home Page'),
-    );
-  }
+class pantalla2 extends StatelessWidget {
 
+  final datosNegocio negocio;
 
-
-  @override
-  State<pantalla2> createState() => _pantalla2State();
-}
-
-class _pantalla2State extends State<pantalla2> {
-  List datos_negocios=[];
-  void initState(){
-    super.initState();
-    getNegocios();
-  }
-  void getNegocios() async{
-    CollectionReference datos= FirebaseFirestore.instance.collection("Negocios"); //conecte a la coleccion
-    QuerySnapshot negocios= await datos.get(); //traer todos los negocios
-    if(negocios.docs.length>0){ //trae datos
-      print("Trae datos...");
-      for(var doc in negocios.docs){
-        print(doc.data());
-        setState(() {
-          datos_negocios.add(doc.data());
-        });
-      }
-    }else{
-      print("Ha fallado...");
-    }
-  }
+  const pantalla2({required this.negocio});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Listado De Negocios Pantalla 2'),
+        title: Text('Pan2 Datos Negocio '+negocio.Nombre),
       ),
-      body: Center(
-        child: ListView.builder(
-            itemCount: datos_negocios.length,
-            itemBuilder: (BuildContext context, j) {
-              return Container(
-                //padding: EdgeInsets.all(27),
+      body: ListView(
+        children: [
+          miCardImage(url: negocio.Logo,
+              texto: negocio.Nombre
+                  + ' \n ✆ : ' + negocio.Telefono.toString()
+                  + ' \n ➤ : ' + negocio.Direccion),
 
-                  child: miCardImage(url: datos_negocios[j]['Logo'],
-                      texto: datos_negocios[j]['Nombre']
-                          + "\n ✆ :  " + datos_negocios[j]['Telefono'].toString()
-                          + '\n ➤ :  ' + datos_negocios[j]['Direccion'])
+          Center(                      //   BOTON  A  WEB
+              child: ElevatedButton.icon(
+                onPressed: (){
+                  launch(negocio.Web.toString());
+                  },
+                icon: Icon(Icons.travel_explore_outlined),
+                label: Text('Mi pagina web'),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    ),
+                  minimumSize: Size(300, 40),         //  TAMAÑO DEL BOTON
+                ),
+              ),
+          ),
 
+          Column(
+            children: [
 
-              );
-            }),
+              Container(
+                margin: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(6.0),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blueAccent),
+                    borderRadius: BorderRadius.circular(6.0)
+                ),
+                child: Text(' ↓  Nuestros Productos ↓ ',style: TextStyle(fontSize: 27),),
+              ),
+              Container(        //    CONTAINER  PARA IMAGEN
+                padding: EdgeInsets.all(20),
+                margin: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(60),
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 6,
+                  ),
+                ),
+                child: Image.network(negocio.Imagen,scale: 1.0,),
+                height: 450.0,
+                width: 450.0,
+
+              ),
+              Container(          //    CONTAINER  PARA IMAGEN1
+                padding: EdgeInsets.all(20),
+                margin: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  //color: Colors.white,
+                  borderRadius: BorderRadius.circular(60),
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 6,
+                  ),
+                ),
+                child: Image.network(negocio.Imagen1),
+                height: 450.0,
+                width: 450.0,
+              ),
+            ],
+          )
+        ],
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Navigator.of(context).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
           //Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla3()));
-
+          Navigator.of(context).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
         }, label: Text("Atras"),
         icon: Icon(Icons.arrow_left),
       ),
     );
   }
 }
-
-
-class miCardImage extends StatelessWidget {
-  final String url;
-  final String texto;
-
-  const miCardImage({required this.url, required this.texto});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
-      margin: EdgeInsets.all(20),
-      elevation: 10,
-      color: Colors.blueAccent,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(35),
-        child: Column(
-          children: [
-            Image.network(url),
-            Container(
-              padding: EdgeInsets.all(10),
-              color: Colors.blueAccent,
-              child: Text(texto,style: TextStyle(fontSize: 20, color: Colors.white),
-                textAlign: TextAlign.center,),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-

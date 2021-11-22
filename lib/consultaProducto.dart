@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mivecindad/pantalla1.dart';
-import 'package:mivecindad/pantalla4.dart';
+import 'package:mivecindad/resultadoProducto.dart';
 
-//  *****  TEXTFIELD  PARA INGRESAR BUSQUEDA POR CATEGORIA **************
 
-class pantalla3 extends StatelessWidget {
-  //const pantalla3({Key? key}) : super(key: key);
+//  *****  TEXTFIELD  PARA INGRESAR BUSQUEDA POR consultaProducto **************
+
+class consultaProducto extends StatelessWidget {
+  //const consultaProducto({Key? key}) : super(key: key);
 
   TextEditingController dato = TextEditingController();
 
@@ -13,7 +14,7 @@ class pantalla3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Consulta por Categoria en Pantalla 3'),
+        title: Text('Consulta por Producto '),
       ),
       body: Column(
         children: [
@@ -28,7 +29,7 @@ class pantalla3 extends StatelessWidget {
               textInputAction: TextInputAction.send,
               decoration: InputDecoration(
                   prefixIcon: Icon(Icons.search,color: Colors.black38,),
-                  hintText: "Busca Categoria en plural"
+                  hintText: "Ejem  Pollo Asado"
               ),
             ),
 
@@ -37,8 +38,8 @@ class pantalla3 extends StatelessWidget {
             child: ElevatedButton(
               onPressed: (){
                 print(dato.text);
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla4(dato.text)));
-              },child: Text('Consultar por categoria'),
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> resultadoProducto(dato.text)));
+              },child: Text('Consultar por producto'),
 
             ),
           ),
@@ -49,7 +50,7 @@ class pantalla3 extends StatelessWidget {
             Navigator.push(context, MaterialPageRoute(builder: (context)=> main()));
           }, label: Text("Inicio"),
           icon: Icon(Icons.arrow_left), */
-        ),
+      ),
       bottomNavigationBar: barrainferior(),
 
     );
