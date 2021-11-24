@@ -79,7 +79,7 @@ void getNegocios() async{
                 margin: EdgeInsets.only(top:0.0),
                 //color: Colors.cyanAccent,
                 //padding: EdgeInsets.all(20.0),
-                child: Image.network("https://i.pinimg.com/550x/e4/e1/fb/e4e1fb324a6796b50c3c6cd800b937f2.jpg",height: 710,width: 710,)
+                child: Image.network("https://i.pinimg.com/550x/e4/e1/fb/e4e1fb324a6796b50c3c6cd800b937f2.jpg",height: 636,width: 710,)
             ),
           ],
 
