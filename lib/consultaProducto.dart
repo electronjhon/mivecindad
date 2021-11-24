@@ -43,6 +43,17 @@ class consultaProducto extends StatelessWidget {
 
             ),
           ),
+          Container(
+            margin: const EdgeInsets.all(36.0),
+            padding: const EdgeInsets.all(6.0),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.blueAccent),
+                borderRadius: BorderRadius.circular(6.0)
+            ),
+            child: Text(' Ejemplo de consulta ' '\n' 'Pollo Asado'
+                '\n' 'Unesia' '\n''Palanquetas '
+              ,style: TextStyle(fontSize: 27),),
+          ),
 
         ],
         /*floatingActionButton: FloatingActionButton.extended(

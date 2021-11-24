@@ -42,6 +42,18 @@ class pantalla3 extends StatelessWidget {
 
             ),
           ),
+          Container(
+            margin: const EdgeInsets.all(36.0),
+            padding: const EdgeInsets.all(6.0),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.blueAccent),
+                borderRadius: BorderRadius.circular(6.0)
+            ),
+            child: Text(' Ejemplo de consulta ' '\n' 'Asaderos '
+                '\n' 'Panaderias' '\n''Droguerias '
+              ,style: TextStyle(fontSize: 27),),
+          ),
+
 
         ],
         /*floatingActionButton: FloatingActionButton.extended(
