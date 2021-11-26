@@ -121,6 +121,21 @@ class pantalla5 extends StatelessWidget {
                 height: 450.0,
                 width: 450.0,
               ),
+              Container(          //    CONTAINER  PARA IMAGEN2
+                padding: EdgeInsets.all(20),
+                margin: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  //color: Colors.white,
+                  borderRadius: BorderRadius.circular(60),
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 6,
+                  ),
+                ),
+                child: Image.network(negocio.Imagen2),
+                height: 450.0,
+                width: 450.0,
+              ),
             ],
           )
         ],

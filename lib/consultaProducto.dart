@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mivecindad/main.dart';
 import 'package:mivecindad/pantalla1.dart';
 import 'package:mivecindad/resultadoProducto.dart';
 
@@ -16,6 +17,7 @@ class consultaProducto extends StatelessWidget {
       appBar: AppBar(
         title: Text('Consulta por Producto '),
       ),
+      drawer: menu(),
       body: Column(
         children: [
           Container(

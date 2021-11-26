@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mivecindad/main.dart';
 import 'package:mivecindad/pantalla3.dart';
 import 'package:mivecindad/pantalla5.dart';
 import 'package:flutter/widgets.dart';
@@ -45,6 +46,7 @@ class _pantalla4State extends State<pantalla4> {
       appBar: AppBar(
         title: Text('Pan4 Consulta de '+ widget.criterio),
       ),
+      drawer: menu(),
       body:  ListView.builder(
             itemCount: negs.length,
             itemBuilder: (BuildContext context, j) {
@@ -59,7 +61,8 @@ class _pantalla4State extends State<pantalla4> {
                       negs[j]['Logo'],
                       negs[j]['Web'],
                       negs[j]['Imagen'],
-                      negs[j]['Imagen1']);
+                      negs[j]['Imagen1'],
+                      negs[j]['Imagen2']);
 
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>pantalla5(negocio: n)));
                 },
@@ -118,15 +121,16 @@ class miCardImage extends StatelessWidget {
 class datosNegocio{
 
   String Nombre="";
-  int Telefono=0;
+  String Telefono="";
   String Direccion="";
   String Logo="";
   String Web="";
   String Imagen="";
   String Imagen1="";
+  String Imagen2="";
 
 
-  datosNegocio(Nombre,Telefono,Direccion,Logo,Web,Imagen,Imagen1){
+  datosNegocio(Nombre,Telefono,Direccion,Logo,Web,Imagen,Imagen1,Imagen2){
     this.Nombre=Nombre;
     this.Telefono=Telefono;
     this.Direccion=Direccion;
@@ -134,6 +138,7 @@ class datosNegocio{
     this.Web=Web;
     this.Imagen=Imagen;
     this.Imagen1=Imagen1;
+    this.Imagen2=Imagen2;
 
   }
 

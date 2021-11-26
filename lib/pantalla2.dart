@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mivecindad/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:mivecindad/pantalla1.dart';
 
@@ -16,6 +17,7 @@ class pantalla2 extends StatelessWidget {
       appBar: AppBar(
         title: Text('Pan2 Datos Negocio '+negocio.Nombre),
       ),
+      drawer: menu(),
       body: ListView(
         children: [
           miCardImage(url: negocio.Logo,
@@ -77,9 +79,24 @@ class pantalla2 extends StatelessWidget {
                     width: 6,
                   ),
                 ),
-                child: Image.network(negocio.Imagen1),
+                child: Image.network(negocio.Imagen1,scale: 1.0,),
                 height: 450.0,
                 width: 450.0,
+              ),
+              Container(        //    CONTAINER  PARA IMAGEN2
+                padding: EdgeInsets.all(20),
+                margin: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(60),
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 6,
+                  ),
+                ),
+                child: Image.network(negocio.Imagen2,scale: 1.0,),
+                height: 450.0,
+                width: 450.0,
+
               ),
             ],
           )

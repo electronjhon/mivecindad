@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mivecindad/main.dart';
+
+// REGISTRO CLIENTE
 
 class registroClientes extends StatefulWidget {
   const registroClientes({Key? key}) : super(key: key);
@@ -30,6 +33,7 @@ class _registroClientesState extends State<registroClientes> {
       appBar: AppBar(
         title: Text('Registro Clientes'),
       ),
+      drawer: menu(),
       body: ListView(
         children: [
           Container(
@@ -40,7 +44,7 @@ class _registroClientesState extends State<registroClientes> {
               decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
-                  icon: Icon(Icons.pin_outlined,size: 25,color: Colors.blue,),
+                  icon: Icon(Icons.pin_outlined,size: 36,color: Colors.blue,),
                   hintText: 'Digite su numero de cedula',
                   hintStyle: TextStyle(color: Colors.black38)
 
@@ -55,7 +59,7 @@ class _registroClientesState extends State<registroClientes> {
               decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
-                  icon: Icon(Icons.badge_outlined,size: 25,color: Colors.blue,),
+                  icon: Icon(Icons.badge_outlined,size: 36,color: Colors.blue,),
                   hintText: 'Digite su nombre',
                   hintStyle: TextStyle(color: Colors.black38)
 
@@ -70,7 +74,7 @@ class _registroClientesState extends State<registroClientes> {
               decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
-                  icon: Icon(Icons.badge_outlined,size: 25,color: Colors.blue,),
+                  icon: Icon(Icons.badge_outlined,size: 36,color: Colors.blue,),
                   hintText: 'Digite sus apellidos',
                   hintStyle: TextStyle(color: Colors.black38)
 
@@ -85,7 +89,7 @@ class _registroClientesState extends State<registroClientes> {
               decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
-                  icon: Icon(Icons.local_post_office_outlined,size: 25,color: Colors.blue,),
+                  icon: Icon(Icons.local_post_office_outlined,size: 36,color: Colors.blue,),
                   hintText: 'Digite su correo',
                   hintStyle: TextStyle(color: Colors.black38)
 
@@ -100,58 +104,60 @@ class _registroClientesState extends State<registroClientes> {
               decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
-                  icon: Icon(Icons.call_outlined,size: 25,color: Colors.blue,),
+                  icon: Icon(Icons.call_outlined,size: 36,color: Colors.blue,),
                   hintText: 'Digite su numero de celular',
                   hintStyle: TextStyle(color: Colors.black38)
 
               ),
             ),
           ),
-          Row(
-            children: [
-              Container(
-                padding: EdgeInsets.all(20.0),
-                child: ElevatedButton(
 
-                  onPressed: () async {
-                    if(cedula.text.isEmpty || nombre.text.isEmpty ||
-                        apellido.text.isEmpty || correo.text.isEmpty ||
-                        celular.text.isEmpty ) {
-                      print('campos vacios');
-                      Fluttertoast.showToast(msg: "Campos Vacios", toastLength: Toast.LENGTH_LONG, gravity: ToastGravity.BOTTOM);
-                    }else{
-                      QuerySnapshot existe = await clientes.where(FieldPath.documentId, isEqualTo: cedula.text).get();
+              Center(
+                child: Container(
+                  padding: EdgeInsets.all(20.0),
+                  child: ElevatedButton(
 
-                    if(existe.docs.length>0){
-                    Fluttertoast.showToast(msg: "El cliente ya Existe.", toastLength: Toast.LENGTH_LONG, gravity: ToastGravity.BOTTOM);
-                    limpiar();
-                    }else {
-                      clientes.doc(cedula.text).set({
-                        "nombre": nombre.text,
-                        "apellido": apellido.text,
-                        "correo": correo.text,
-                        "celular": celular.text
-                        });
-                      QuerySnapshot inserto = await clientes.where(FieldPath.documentId, isEqualTo: cedula.text).get();
-                      limpiar();
-                      if(inserto.docs.length>0){
-                        Fluttertoast.showToast(msg: "Cliente registrado exitosamente.", toastLength: Toast.LENGTH_LONG, gravity: ToastGravity.BOTTOM);
+                    onPressed: () async {
+                      if(cedula.text.isEmpty || nombre.text.isEmpty ||
+                          apellido.text.isEmpty || correo.text.isEmpty ||
+                          celular.text.isEmpty ) {
+                        print('campos vacios');
+                        Fluttertoast.showToast(msg: "Campos Vacios", toastLength: Toast.LENGTH_LONG, gravity: ToastGravity.BOTTOM);
                       }else{
-                        Fluttertoast.showToast(msg: "Cliente no fue registrado.", toastLength: Toast.LENGTH_LONG, gravity: ToastGravity.BOTTOM);
+                        QuerySnapshot existe = await clientes.where(FieldPath.documentId, isEqualTo: cedula.text).get();
+
+                      if(existe.docs.length>0){
+                      Fluttertoast.showToast(msg: "El cliente ya Existe.", toastLength: Toast.LENGTH_LONG, gravity: ToastGravity.BOTTOM);
+                      limpiar();
+                      }else {
+                        clientes.doc(cedula.text).set({
+                          "nombre": nombre.text,
+                          "apellido": apellido.text,
+                          "correo": correo.text,
+                          "celular": celular.text
+                          });
+                        QuerySnapshot inserto = await clientes.where(FieldPath.documentId, isEqualTo: cedula.text).get();
+                        limpiar();
+                        if(inserto.docs.length>0){
+                          Fluttertoast.showToast(msg: "Cliente registrado exitosamente.", toastLength: Toast.LENGTH_LONG, gravity: ToastGravity.BOTTOM);
+                        }else{
+                          Fluttertoast.showToast(msg: "Cliente no fue registrado.", toastLength: Toast.LENGTH_LONG, gravity: ToastGravity.BOTTOM);
+                          }
                         }
                       }
-                    }
-                  },
-                  child: Text('Registrar',style: TextStyle(color: Colors.white,fontSize: 25),),
+                    },
+                    child: Text('Registrar',style: TextStyle(color: Colors.white,fontSize: 25),),
 
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)
+                      ),
+                      minimumSize: Size(150, 45)
                     ),
-                    minimumSize: Size(150, 45)
                   ),
                 ),
               ),
+              /*
               Container(
                 padding: EdgeInsets.all(20.0),
                 child: ElevatedButton(
@@ -190,9 +196,9 @@ class _registroClientesState extends State<registroClientes> {
                       minimumSize: Size(150, 45)
                   ),
                 ),
-              )
-            ],
-          ),
+              )*/
+
+          /*
           Row(
             children: [
               Container(
@@ -220,7 +226,8 @@ class _registroClientesState extends State<registroClientes> {
                       minimumSize: Size(150, 45)
                   ),
                 ),
-              ),
+              ),*/
+              /*
               Container(
                 padding: EdgeInsets.all(20.0),
                 child: ElevatedButton(
@@ -244,7 +251,7 @@ class _registroClientesState extends State<registroClientes> {
                 ),
               )
             ],
-          )
+          )*/
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
