@@ -84,7 +84,8 @@ class _resultadoProducto extends State<resultadoProducto> {
                     Negocios[j]['Logo'],
                     Negocios[j]['Web'],
                     Negocios[j]['Imagen'],
-                    Negocios[j]['Imagen1']);
+                    Negocios[j]['Imagen1'],
+                    Negocios[j]['Imagen2']);
 
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>pantalla6(negocio: n)));
               },
@@ -151,14 +152,15 @@ class miCardImage extends StatelessWidget {
 class datosNegocio2{
 
   String Nombre="";
-  int Telefono=0;
+  String Telefono="";
   String Direccion="";
   String Logo="";
   String Web="";
   String Imagen="";
   String Imagen1="";
+  String Imagen2="";
 
-  datosNegocio2(Nombre,Telefono,Direccion,Logo,Web,Imagen,Imagen1){
+  datosNegocio2(Nombre,Telefono,Direccion,Logo,Web,Imagen,Imagen1,Imagen2){
     this.Nombre=Nombre;
     this.Telefono=Telefono;
     this.Direccion=Direccion;
@@ -166,6 +168,6 @@ class datosNegocio2{
     this.Web=Web;
     this.Imagen=Imagen;
     this.Imagen1=Imagen1;
-
+    this.Imagen2=Imagen2;
   }
 }

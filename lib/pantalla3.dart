@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mivecindad/pantalla1.dart';
 import 'package:mivecindad/pantalla4.dart';
 
+import 'main.dart';
+
 //  *****  TEXTFIELD  PARA INGRESAR BUSQUEDA POR CATEGORIA **************
 
 class pantalla3 extends StatelessWidget {
@@ -15,6 +17,7 @@ class pantalla3 extends StatelessWidget {
       appBar: AppBar(
         title: Text('Consulta por Categoria en Pantalla 3'),
       ),
+      drawer: menu(),
       body: Column(
         children: [
           Container(
@@ -42,6 +45,18 @@ class pantalla3 extends StatelessWidget {
 
             ),
           ),
+          Container(
+            margin: const EdgeInsets.all(36.0),
+            padding: const EdgeInsets.all(6.0),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.blueAccent),
+                borderRadius: BorderRadius.circular(6.0)
+            ),
+            child: Text(' Ejemplo de consulta ' '\n' 'Asaderos '
+                '\n' 'Panaderias' '\n''Droguerias '
+              ,style: TextStyle(fontSize: 27),),
+          ),
+
 
         ],
         /*floatingActionButton: FloatingActionButton.extended(

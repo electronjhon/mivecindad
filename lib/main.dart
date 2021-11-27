@@ -1,12 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mivecindad/comprobarCliente.dart';
+import 'package:mivecindad/moduloPedido.dart';
 import 'package:mivecindad/pantalla1.dart';
 import 'package:mivecindad/pantalla2.dart';
 import 'package:mivecindad/pantalla3.dart';
 import 'package:mivecindad/pantalla4.dart';
 import 'package:mivecindad/consultaProducto.dart';
 import 'package:mivecindad/registroCliente.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -71,15 +75,21 @@ void getNegocios() async{
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title:  Text(" Mi Vecindad ",
-          style: TextStyle(fontStyle:   FontStyle.italic,fontSize: 25),),
+          style: GoogleFonts.satisfy(
+            textStyle: TextStyle(color: Colors.white,
+            fontSize: 36)
+          ),
+          //style: TextStyle(fontStyle:   FontStyle.italic,fontSize: 25),
+        ),
       ),
+        drawer: menu(),
         body: Column(
           children: [
             Container(
                 margin: EdgeInsets.only(top:0.0),
                 //color: Colors.cyanAccent,
                 //padding: EdgeInsets.all(20.0),
-                child: Image.network("https://i.pinimg.com/550x/e4/e1/fb/e4e1fb324a6796b50c3c6cd800b937f2.jpg",height: 636,width: 710,)
+                child: Image.network("https://i.pinimg.com/550x/e4/e1/fb/e4e1fb324a6796b50c3c6cd800b937f2.jpg",height: 710,width: 710,)
             ),
           ],
 
@@ -88,7 +98,7 @@ void getNegocios() async{
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context)=> registroClientes()));
           }, label: Text("Registrarse"),
-        icon: Icon(Icons.add,size: 30,color: Colors.white,),
+        icon: Icon(Icons.add_circle,size: 30,color: Colors.white,),
       ),
         bottomNavigationBar: barrainferior()
 
@@ -115,7 +125,7 @@ class barrainferior extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla1(title: title)));
 
           //print(t);
-        }else{
+        }else{    // va a pantalla3
           print("va a consulta categoria");
           Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla3()));
         }
@@ -131,10 +141,149 @@ class barrainferior extends StatelessWidget {
             label: 'Negocios'
         ),
         BottomNavigationBarItem(
-            icon: Icon(Icons.cases),
+            icon: Icon(Icons.category),
             label: 'Categorias'
         )
       ],
+    );
+  }
+}
+
+class menu extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+              decoration: BoxDecoration(
+                  color: Colors.lightBlueAccent
+              ),
+              child: Center(
+                child: Text('Mi vecindad',
+                style: GoogleFonts.satisfy(
+                  textStyle: TextStyle(
+                      color: Colors.white,
+                      fontSize: 45,
+                      wordSpacing: 12
+                  )
+                  ),
+                ),
+              )
+          ),
+
+          Column(
+            children: [
+              ListTile(
+                /*leading: Icon(Icons.account_circle_outlined,
+                    size: 30,
+                    color: Colors.lightBlue), */
+                title: Text('       Bienvenido',
+                  style: GoogleFonts.lobsterTwo(
+                      textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 21)
+                  ),
+                ),
+                onTap: () {
+                 // Navigator.push(context,
+                      //   MaterialPageRoute(builder: (context)=>main()));
+                  // Navigator.push(context,
+                  //  Navigator.of(context).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+                },
+
+              ),
+              ListTile(
+                leading: Icon(Icons.add_shopping_cart,
+                    size: 30,
+                    color: Colors.lightBlue),
+                title: Text('Realizar una compra',
+                  style: GoogleFonts.lobsterTwo(
+                      textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 21)
+                  ),
+                ),
+                onTap: () {
+                   Navigator.push(context,
+                     MaterialPageRoute(builder: (context)=>moduloPedido()));
+                },
+
+              ),
+              ListTile(
+                leading: Icon(Icons.add_circle,
+                    size: 30,
+                    color: Colors.lightBlue),
+                title: Text('Registrarse',
+                  style: GoogleFonts.lobsterTwo(
+                      textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 21)
+                  ),
+                ),
+                onTap: () {
+                   Navigator.push(context,
+                     MaterialPageRoute(builder: (context)=>registroClientes()));
+                },
+
+              ),
+              ListTile(
+                leading: Icon(Icons.badge_outlined,
+                    size: 30,
+                    color: Colors.lightBlue),
+                title: Text('Actualizar datos',
+                  style: GoogleFonts.lobsterTwo(
+                      textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 21)
+                  ),
+                ),
+                onTap: () {
+                   Navigator.push(context,
+                     MaterialPageRoute(builder: (context)=>comprobarCliente()));
+                },
+
+              ),
+              ListTile(
+                leading: Icon(Icons.shopping_bag,
+                    size: 30,
+                    color: Colors.lightBlue),
+                title: Text('Consultar Productos',
+                  style: GoogleFonts.lobsterTwo(
+                      textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 21)
+                  ),
+                ),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>consultaProducto()));
+                },
+
+              ),
+              ListTile(
+                leading: Icon(Icons.category,
+                    size: 30,
+                    color: Colors.lightBlue),
+                title: Text('Consulta por categoria',
+                  style: GoogleFonts.lobsterTwo(
+                      textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 21)
+                  ),
+                ),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>pantalla3()));
+                },
+
+              )
+            ],
+          )
+        ],
+      ),
     );
   }
 }

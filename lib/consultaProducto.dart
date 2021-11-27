@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mivecindad/main.dart';
 import 'package:mivecindad/pantalla1.dart';
 import 'package:mivecindad/resultadoProducto.dart';
 
@@ -16,6 +17,7 @@ class consultaProducto extends StatelessWidget {
       appBar: AppBar(
         title: Text('Consulta por Producto '),
       ),
+      drawer: menu(),
       body: Column(
         children: [
           Container(
@@ -42,6 +44,17 @@ class consultaProducto extends StatelessWidget {
               },child: Text('Consultar por producto'),
 
             ),
+          ),
+          Container(
+            margin: const EdgeInsets.all(36.0),
+            padding: const EdgeInsets.all(6.0),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.blueAccent),
+                borderRadius: BorderRadius.circular(6.0)
+            ),
+            child: Text(' Ejemplo de consulta ' '\n' 'Pollo Asado'
+                '\n' 'Unesia' '\n''Palanquetas '
+              ,style: TextStyle(fontSize: 27),),
           ),
 
         ],
