@@ -136,6 +136,36 @@ class pantalla5 extends StatelessWidget {
                 height: 450.0,
                 width: 450.0,
               ),
+              Container(        //    CONTAINER  PARA IMAGEN3
+                padding: EdgeInsets.all(20),
+                margin: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(60),
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 6,
+                  ),
+                ),
+                child: Image.network(negocio.Imagen3,scale: 1.0,),
+                height: 450.0,
+                width: 450.0,
+
+              ),
+              Container(        //    CONTAINER  PARA IMAGEN4
+                padding: EdgeInsets.all(20),
+                margin: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(60),
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 6,
+                  ),
+                ),
+                child: Image.network(negocio.Imagen4,scale: 1.0,),
+                height: 450.0,
+                width: 450.0,
+
+              ),
             ],
           )
         ],

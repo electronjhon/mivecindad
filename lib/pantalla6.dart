@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mivecindad/consultaProducto.dart';
+import 'package:mivecindad/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:mivecindad/pantalla3.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -20,6 +21,7 @@ class pantalla6 extends StatelessWidget {
       appBar: AppBar(
         title: Text('Pan6 Datos Negocio '+negocio.Nombre),
       ),
+      drawer: menu(),
       body: ListView(
         children: [
           miCardImage(url: negocio.Logo,
