@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mivecindad/main.dart';
 import 'package:mivecindad/pantalla3.dart';
 import 'package:mivecindad/pantalla4.dart';
 import 'package:flutter/widgets.dart';
@@ -70,6 +71,7 @@ class _resultadoProducto extends State<resultadoProducto> {
       appBar: AppBar(
         title: Text('PanResulProd Consulta de '+widget.criterio1),
       ),
+      drawer: menu(),
       body:  ListView.builder(
           itemCount: Negocios.length,
           itemBuilder: (BuildContext context, j) {
@@ -85,7 +87,9 @@ class _resultadoProducto extends State<resultadoProducto> {
                     Negocios[j]['Web'],
                     Negocios[j]['Imagen'],
                     Negocios[j]['Imagen1'],
-                    Negocios[j]['Imagen2']);
+                    Negocios[j]['Imagen2'],
+                    Negocios[j]['Imagen3'],
+                    Negocios[j]['Imagen4']);
 
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>pantalla6(negocio: n)));
               },
@@ -96,7 +100,7 @@ class _resultadoProducto extends State<resultadoProducto> {
                       + ' \n ➤ : ' + Negocios[j]['Direccion']
                       + ' \n '
                       + ' \n ' + prod[j]['nombre_prod']
-                      + ' \n ' + prod[j]['precio_prod']
+                      + ' \n ' + prod[j]['precio_prod'].toString()
                      // + ' \n ' + prod[j]['imagen_prod'],
 
               ),
@@ -159,8 +163,11 @@ class datosNegocio2{
   String Imagen="";
   String Imagen1="";
   String Imagen2="";
+  String Imagen3="";
+  String Imagen4="";
 
-  datosNegocio2(Nombre,Telefono,Direccion,Logo,Web,Imagen,Imagen1,Imagen2){
+
+  datosNegocio2(Nombre,Telefono,Direccion,Logo,Web,Imagen,Imagen1,Imagen2,Imagen3,Imagen4){
     this.Nombre=Nombre;
     this.Telefono=Telefono;
     this.Direccion=Direccion;
@@ -169,5 +176,7 @@ class datosNegocio2{
     this.Imagen=Imagen;
     this.Imagen1=Imagen1;
     this.Imagen2=Imagen2;
+    this.Imagen3=Imagen3;
+    this.Imagen4=Imagen4;
   }
 }

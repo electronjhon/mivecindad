@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:mivecindad/carritoCompras.dart';
 import 'package:mivecindad/listadoNegocios.dart';
 import 'main.dart';
 
+
 class registrarPedido extends StatefulWidget {
-  final String id,cedula;  // id es id de profesor / cedula es el id del cliente
+  final String id,cedula;  // id es id de negocio / cedula es el id del cliente
   const registrarPedido({required this.id,required this.cedula});
 
   @override
@@ -12,25 +14,116 @@ class registrarPedido extends StatefulWidget {
 }
 
 class _registrarPedidoState extends State<registrarPedido> {
+  List listaProductos=[];    // ListaCursos del ejemplo
+  List codigosPro=[];
+  List<datosPedido> pedido=[];
+
+  void initState(){
+    super.initState();
+    getProductos();
+  }
+  void getProductos()async {
+    CollectionReference productos = FirebaseFirestore.instance.collection('Productos');
+    String cod='';
+    QuerySnapshot producto = await productos.where('negocio', isEqualTo: widget.id).get();
+    if(producto.docs.length>0){
+      for(var doc in producto.docs){
+        cod=doc.id.toString();
+        codigosPro.add(cod);
+        listaProductos.add(doc.data());
+      }
+    }
+    setState(() {
+
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Registrar Pedido'),
+        actions: [
+          IconButton(
+              onPressed: (){
+                for(var i=0 ; i < pedido.length; i++){
+                  print(pedido[i].precio);
+                  print(pedido[i].cant);
+                  print(pedido[i].total);
+                }
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context)=>carritoCompras(pedido: pedido,
+                        cedula: widget.cedula,
+                        id: widget.id)));
+              },
+              icon: const Icon(Icons.add_shopping_cart,
+                size: 45,
+                color: Colors.white,
+              )
+          )
+        ],
       ),
       drawer: menu(),
-      body: Text('Id persona'+widget.id+'--'+'Cedula'+widget.cedula),
+      //body: Text('Id persona'+widget.id+'--'+'Cedula'+widget.cedula),
+      body: ListView.builder(
+          itemCount: listaProductos.length,
+          itemBuilder: (BuildContext context, i){
+            var can = TextEditingController();
+            return ListTile(
+              leading: Icon(Icons.add_circle_outline,
+                size: 30,
+                color: Colors.lightBlueAccent,
+              ),
+              title: Container(
+                padding: EdgeInsets.all(27.0),
 
-      floatingActionButton: FloatingActionButton(
-        // BOTON NAVEGACION  A HOME
+                color: Colors.amber,
+                child: Text(listaProductos[i]['nombre_prod']
+                    //+' '+ listaProductos[i]['descripcion']
+                    +' '+ listaProductos[i]['precio_prod'].toString(),
+                  style: TextStyle(fontSize: 20),),
+
+              ),
+              subtitle: TextField(
+                controller: can,
+                decoration: InputDecoration(
+                    hintText: 'Cantidad'
+                ),
+              ),
+              onTap: (){
+                if(can.text.isEmpty){
+                  can.text='0';
+                }
+                int total =int.parse(can.text)*(int.parse(listaProductos[i]['precio_prod'].toString()));
+                datosPedido p = datosPedido(codigosPro[i], listaProductos[i]['nombre_prod'],
+                    listaProductos[i]['precio_prod'].toString(),
+                    int.parse(can.text),total);
+                pedido.add(p);
+              },
+            );
+          }
+      ),
+
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          //Navigator.push(context, MaterialPageRoute(builder: (context)=>comprobarCliente()));
-          Navigator.of(context)
-              .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
-        },
-        child: Icon(Icons.home, size: 30, color: Colors.white),
+          Navigator.pop(context);
+
+        }, label: Text("Atras"),
+        icon: Icon(Icons.arrow_left),
       ),
 
     );
   }
+}
+
+class datosPedido {
+  String codigo='';
+  String nombre='';
+
+  String precio='';
+  int cant=0;
+  int total=0;
+
+  datosPedido(this.codigo, this.nombre,  this.precio,
+      this.cant, this.total);
 }

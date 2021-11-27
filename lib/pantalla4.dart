@@ -62,7 +62,9 @@ class _pantalla4State extends State<pantalla4> {
                       negs[j]['Web'],
                       negs[j]['Imagen'],
                       negs[j]['Imagen1'],
-                      negs[j]['Imagen2']);
+                      negs[j]['Imagen2'],
+                      negs[j]['Imagen3'],
+                      negs[j]['Imagen4']);
 
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>pantalla5(negocio: n)));
                 },
@@ -128,9 +130,10 @@ class datosNegocio{
   String Imagen="";
   String Imagen1="";
   String Imagen2="";
+  String Imagen3="";
+  String Imagen4="";
 
-
-  datosNegocio(Nombre,Telefono,Direccion,Logo,Web,Imagen,Imagen1,Imagen2){
+  datosNegocio(Nombre,Telefono,Direccion,Logo,Web,Imagen,Imagen1,Imagen2,Imagen3,Imagen4){
     this.Nombre=Nombre;
     this.Telefono=Telefono;
     this.Direccion=Direccion;
@@ -139,6 +142,8 @@ class datosNegocio{
     this.Imagen=Imagen;
     this.Imagen1=Imagen1;
     this.Imagen2=Imagen2;
+    this.Imagen3=Imagen3;
+    this.Imagen4=Imagen4;
 
   }
 
