@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mivecindad/carritoCompras.dart';
 import 'package:mivecindad/listadoNegocios.dart';
 import 'main.dart';
@@ -80,7 +81,7 @@ class _registrarPedidoState extends State<registrarPedido> {
                 color: Colors.amber,
                 child: Text(listaProductos[i]['nombre_prod']
                     //+' '+ listaProductos[i]['descripcion']
-                    +' '+ listaProductos[i]['precio_prod'].toString(),
+                    +'\n'+'\$ '+ listaProductos[i]['precio_prod'].toString(),
                   style: TextStyle(fontSize: 20),),
 
               ),
@@ -99,6 +100,12 @@ class _registrarPedidoState extends State<registrarPedido> {
                     listaProductos[i]['precio_prod'].toString(),
                     int.parse(can.text),total);
                 pedido.add(p);
+                Fluttertoast.showToast(msg: "Pedido agregado a carrito de compras.",
+                    fontSize: 20,
+                    backgroundColor: Colors.lightBlueAccent,
+                    textColor: Colors.white,
+                    toastLength: Toast.LENGTH_LONG,
+                    gravity: ToastGravity.CENTER);
               },
             );
           }
