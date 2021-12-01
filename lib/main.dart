@@ -89,7 +89,7 @@ void getNegocios() async{
                 margin: EdgeInsets.only(top:0.0),
                 //color: Colors.cyanAccent,
                 //padding: EdgeInsets.all(20.0),
-                child: Image.network("https://i.pinimg.com/550x/e4/e1/fb/e4e1fb324a6796b50c3c6cd800b937f2.jpg",height: 613,width: 710,)
+                child: Image.network("https://i.pinimg.com/550x/e4/e1/fb/e4e1fb324a6796b50c3c6cd800b937f2.jpg",height: 710,width: 710,)
             ),
           ],
 
@@ -192,6 +192,23 @@ class menu extends StatelessWidget {
                       //   MaterialPageRoute(builder: (context)=>main()));
                   // Navigator.push(context,
                   //  Navigator.of(context).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+                },
+
+              ),
+              ListTile(
+                leading: Icon(Icons.home,
+                    size: 30,
+                    color: Colors.lightBlue),
+                title: Text('Inicio',
+                  style: GoogleFonts.lobsterTwo(
+                      textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 21)
+                  ),
+                ),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>MyApp()));
                 },
 
               ),
