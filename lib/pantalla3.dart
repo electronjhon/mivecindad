@@ -411,7 +411,6 @@ class pantalla3 extends StatelessWidget {
       bottomNavigationBar: barrainferior(),
 
     );
-
   }
 }
 
