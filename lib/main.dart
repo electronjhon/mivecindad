@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mivecindad/comprobarCliente.dart';
+import 'package:mivecindad/mensaje.dart';
 import 'package:mivecindad/moduloPedido.dart';
 import 'package:mivecindad/pantalla1.dart';
 import 'package:mivecindad/pantalla2.dart';
@@ -296,6 +297,18 @@ class menu extends StatelessWidget {
                       MaterialPageRoute(builder: (context)=>pantalla3()));
                 },
 
+              ),
+              ListTile(
+                leading:
+                Icon(Icons.notifications_active, size: 30, color: Colors.blue),
+                enabled: true,
+                title: Text("Notificaciones",
+                    style: GoogleFonts.lobsterTwo(
+                        textStyle: TextStyle(color: Colors.black, fontSize: 21))),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => mensaje()));
+                },
               )
             ],
           )
