@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mivecindad/comprobarCliente.dart';
+import 'package:mivecindad/mensaje.dart';
 import 'package:mivecindad/moduloPedido.dart';
 import 'package:mivecindad/pantalla1.dart';
 import 'package:mivecindad/pantalla2.dart';
@@ -89,7 +90,7 @@ void getNegocios() async{
                 margin: EdgeInsets.only(top:0.0),
                 //color: Colors.cyanAccent,
                 //padding: EdgeInsets.all(20.0),
-                child: Image.network("https://i.pinimg.com/550x/e4/e1/fb/e4e1fb324a6796b50c3c6cd800b937f2.jpg",height: 613,width: 710,)
+                child: Image.network("https://i.pinimg.com/550x/e4/e1/fb/e4e1fb324a6796b50c3c6cd800b937f2.jpg",height: 710,width: 710,)
             ),
           ],
 
@@ -196,6 +197,23 @@ class menu extends StatelessWidget {
 
               ),
               ListTile(
+                leading: Icon(Icons.home,
+                    size: 30,
+                    color: Colors.lightBlue),
+                title: Text('Inicio',
+                  style: GoogleFonts.lobsterTwo(
+                      textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 21)
+                  ),
+                ),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>MyApp()));
+                },
+
+              ),
+              ListTile(
                 leading: Icon(Icons.add_shopping_cart,
                     size: 30,
                     color: Colors.lightBlue),
@@ -279,6 +297,18 @@ class menu extends StatelessWidget {
                       MaterialPageRoute(builder: (context)=>pantalla3()));
                 },
 
+              ),
+              ListTile(    //COmentario
+                leading:
+                Icon(Icons.notifications_active, size: 30, color: Colors.blue),
+                enabled: true,
+                title: Text("Notificaciones",
+                    style: GoogleFonts.lobsterTwo(
+                        textStyle: TextStyle(color: Colors.black, fontSize: 21))),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => mensaje()));
+                },
               )
             ],
           )

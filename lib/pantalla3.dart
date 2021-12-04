@@ -18,57 +18,399 @@ class pantalla3 extends StatelessWidget {
         title: Text('Consulta por Categoria en Pantalla 3'),
       ),
       drawer: menu(),
-      body: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.all(33.0),
+      body: Container(
+        child: Padding(
+          padding: EdgeInsets.all(21.0),
+          child: GridView.count(
+            crossAxisCount: 3, //cantidad de items
+            crossAxisSpacing: 9, // espacio en vertical
+            mainAxisSpacing: 9, //espacio en horizontal
+            children: [
+              RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.black, width: 2)
+                  ),
+                  elevation: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          'https://i.imgur.com/sPmMddi.jpeg',
+                          scale: 0.5,
+                          //width: 99,
+                          //height: 99,
+                        ),
+                        Text('Asaderos',
+                            style: TextStyle(fontSize: 15, color: Colors.black)),
+                      ],
+                    ),
+                  ),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => pantalla4('Asaderos')));
+                  }),
+              RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.black, width: 2)
+                  ),
+                  elevation: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          'https://i.imgur.com/9ztQMRj.jpeg',
+                          scale: 0.5,
+                          //width: 90,
+                          //height: 90,
+                        ),
+                        Text('Panaderias',
+                            style: TextStyle(fontSize: 13, color: Colors.black)),
+                      ],
+                    ),
+                  ),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => pantalla4('Panaderias')));
+                  }),
+              RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.black, width: 2)
+                  ),
+                  elevation: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          'https://i.imgur.com/0b1K4Qc.jpeg',
+                          scale: 0.5,
+                          //width: 90,
+                          //height: 90,
+                        ),
+                        Text('Bares',
+                            style: TextStyle(fontSize: 14, color: Colors.black)),
+                      ],
+                    ),
+                  ),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => pantalla4('Bares')));
+                  }),
+              RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.black, width: 2)
+                  ),
+                  elevation: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          'https://i.imgur.com/7xoVd8T.jpeg',
+                          scale: 0.5,
+                          //width: 90,
+                          //height: 90,
+                        ),
+                        Text('Droguerias',
+                            style: TextStyle(fontSize: 14, color: Colors.black)),
+                      ],
+                    ),
+                  ),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => pantalla4('Droguerias')));
+                  }),
+              RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.black, width: 2)
+                  ),
+                  elevation: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          'https://i.imgur.com/eGiesAF.jpeg',
+                          scale: 0.5,
+                          //width: 90,
+                          //height: 90,
+                        ),
+                        Text('Cafeterias',
+                            style: TextStyle(fontSize: 14, color: Colors.black)),
+                      ],
+                    ),
+                  ),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => pantalla4('Cafeterias')));
+                  }),
+              RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.black, width: 2)
+                  ),
+                  elevation: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          'https://i.imgur.com/26zoD3S.jpeg',
+                          scale: 0.5,
+                          //width: 90,
+                          //height: 90,
+                        ),
+                        Text('Cafe Internet',
+                            style: TextStyle(fontSize: 15, color: Colors.black)),
+                      ],
+                    ),
+                  ),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => pantalla4('Cafe Internet')));
+                  }),
+              RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.black, width: 2)
+                  ),
+                  elevation: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          'https://i.imgur.com/ZXfcBnr.jpeg',
+                          scale: 0.5,
+                          //width: 90,
+                          //height: 90,
+                        ),
+                        Text('Minitiendas',
+                            style: TextStyle(fontSize: 13, color: Colors.black)),
+                      ],
+                    ),
+                  ),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => pantalla4('Minitiendas')));
+                  }),
+              RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.black, width: 2)
+                  ),
+                  elevation: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          'https://i.imgur.com/coFKMdb.jpeg',
+                          scale: 0.5,
+                          //width: 90,
+                          //height: 90,
+                        ),
+                        Text('Fruterias',
+                            style: TextStyle(fontSize: 15, color: Colors.black)),
+                      ],
+                    ),
+                  ),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => pantalla4('Fruterias')));
+                  }),
+              RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.black, width: 2)
+                  ),
+                  elevation: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          'https://i.imgur.com/8x2dyeQ.jpeg',
+                          scale: 0.5,
+                          //width: 90,
+                          //height: 90,
+                        ),
+                        Text('Famas',
+                            style: TextStyle(fontSize: 18, color: Colors.black)),
+                      ],
+                    ),
+                  ),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => pantalla4('Famas')));
+                  }),
+              RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.black, width: 2)
+                  ),
+                  elevation: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          'https://i.imgur.com/Xqaf7uP.jpeg',
+                          scale: 0.5,
+                          //width: 90,
+                          //height: 90,
+                        ),
+                        Text('Supermercados',
+                            style: TextStyle(fontSize: 12, color: Colors.black)),
+                      ],
+                    ),
+                  ),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => pantalla4('Supermercados')));
+                  }),
+              RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.black, width: 2)
+                  ),
+                  elevation: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          'https://i.imgur.com/kasYXK3.jpeg',
+                          scale: 0.5,
+                          //width: 90,
+                          //height: 90,
+                        ),
+                        Text('Papelerias',
+                            style: TextStyle(fontSize: 13, color: Colors.black)),
+                      ],
+                    ),
+                  ),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => pantalla4('Papelerias')));
+                  }),
+              RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.black, width: 2)
+                  ),
+                  elevation: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          'https://i.imgur.com/o2F8KIY.jpeg',
+                          scale: 0.5,
+                          //width: 90,
+                          //height: 90,
+                        ),
+                        Text('Peluquerias',
+                            style: TextStyle(fontSize: 13, color: Colors.black)),
+                      ],
+                    ),
+                  ),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => pantalla4('Peluquerias')));
+                  }),
+              RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.black, width: 2)
+                  ),
+                  elevation: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.network(
+                          'https://i.imgur.com/LojKvUV.jpeg',
+                          scale: 0.5,
+                          //width: 90,
+                          //height: 90,
+                        ),
+                        Text('Restaurantes',
+                            style: TextStyle(fontSize: 11, color: Colors.black)),
+                      ],
+                    ),
+                  ),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => pantalla4('Restaurantes')));
+                  }),
 
-            child:
-            TextField(controller: dato,style: TextStyle(fontSize: 27),
-              autofocus: false,
-              // autofocus: true,
-              keyboardType: TextInputType.name,
-              textInputAction: TextInputAction.send,
-              decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.search,color: Colors.black38,),
-                  hintText: "Busca Categoria en plural"
-              ),
-            ),
-
+            ],
           ),
-          Container(
-            child: ElevatedButton(
-              onPressed: (){
-                print(dato.text);
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla4(dato.text)));
-              },child: Text('Consultar por categoria'),
-
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(36.0),
-            padding: const EdgeInsets.all(6.0),
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.blueAccent),
-                borderRadius: BorderRadius.circular(6.0)
-            ),
-            child: Text(' Ejemplo de consulta ' '\n' 'Asaderos '
-                '\n' 'Panaderias' '\n''Droguerias '
-              ,style: TextStyle(fontSize: 27),),
-          ),
-
-
-        ],
-        /*floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> main()));
-          }, label: Text("Inicio"),
-          icon: Icon(Icons.arrow_left), */
         ),
+      ),
       bottomNavigationBar: barrainferior(),
 
     );
-
   }
 }
 
