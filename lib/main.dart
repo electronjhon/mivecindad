@@ -11,6 +11,7 @@ import 'package:mivecindad/pantalla3.dart';
 import 'package:mivecindad/pantalla4.dart';
 import 'package:mivecindad/consultaProducto.dart';
 import 'package:mivecindad/registroCliente.dart';
+import 'package:mivecindad/mapas.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -309,7 +310,7 @@ class menu extends StatelessWidget {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => mensaje()));
                 },
-              )
+              ),
             ],
           )
         ],

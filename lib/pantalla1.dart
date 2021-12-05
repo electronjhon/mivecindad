@@ -74,7 +74,8 @@ class _pantalla1State extends State<pantalla1> {
                       datos_negocios[j]['Imagen1'],
                       datos_negocios[j]['Imagen2'],
                       datos_negocios[j]['Imagen3'],
-                      datos_negocios[j]['Imagen4']);
+                      datos_negocios[j]['Imagen4'],
+                      datos_negocios[j]['posicion']);
 
 
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>pantalla2(negocio: d)));
@@ -145,9 +146,22 @@ class datosNegocio{
   String Imagen2="";
   String Imagen3="";
   String Imagen4="";
+  late GeoPoint posicion;
 
+  datosNegocio(this.Nombre,
+  this.Telefono,
+  this.Direccion,
+  this.Logo,
+  this.Web,
+  this.Imagen,
+  this.Imagen1,
+  this.Imagen2,
+  this.Imagen3,
+  this.Imagen4,
+  this.posicion,);
 
-  datosNegocio(Nombre,Telefono,Direccion,Logo,Web,Imagen,Imagen1,Imagen2,Imagen3,Imagen4){
+  }
+ /* datosNegocio(Nombre,Telefono,Direccion,Logo,Web,Imagen,Imagen1,Imagen2,Imagen3,Imagen4,posicion){
     this.Nombre=Nombre;
     this.Telefono=Telefono;
     this.Direccion=Direccion;
@@ -158,10 +172,6 @@ class datosNegocio{
     this.Imagen2=Imagen2;
     this.Imagen3=Imagen3;
     this.Imagen4=Imagen4;
+    this.posicion=posicion;
 
-  }
-
-}
-
-
-
+  }*/

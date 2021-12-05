@@ -32,6 +32,7 @@ dependencies:
   url_launcher: ^6.0.15
   google_fonts: ^2.1.0
   firebase_messaging:
+  google_maps_flutter: ^2.1.1
 
 
   # The following adds the Cupertino Icons font to your application.
